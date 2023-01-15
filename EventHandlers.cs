@@ -14,9 +14,15 @@ namespace NerfedSpawnedSCPs
         public void OnChangingRole(ChangingRoleEventArgs ev)
         {
             if (ev.Player.CheckPermission("nss.immunity"))
+            {
+                Log.Debug($"Player {ev.Player.Nickname}({ev.Player.RawUserId}) is immune!");
                 return;
+            }
             if (!Plugin.Instance.Config.SpawnReasons.Contains(ev.Reason) || ev.NewRole == RoleTypeId.Scp079)
+            {
+                Log.Debug($"Player {ev.Player.Nickname}({ev.Player.RawUserId})'s forceclass reason was not in the list or they were changed to 079.");
                 return;
+            }
             if (ev.NewRole.GetSide() == Side.Scp && Round.ElapsedTime > TimeSpan.FromMinutes(Plugin.Instance.Config.TimeToActivate))
             {
                 Timing.CallDelayed(0.1f, () => ev.Player.Health *= (Plugin.Instance.Config.SCPHealthPercent/100));
