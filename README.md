@@ -1,3 +1,4 @@
+<a href="https://github.com/Mikihero/NerfedSpawnedSCPs/releases"><img src="https://img.shields.io/github/downloads/Mikihero/NerfedSpawnedSCPs/total?label=Downloads" alt="Downloads"></a>
 # NerfedSpawnedSCPs
 An SCP:SL EXILED plugin that makes anyone forceclassed to an scp after a configurable amount of time has passed, to have their hp lowered to a configurable amount.
 # Default Config
