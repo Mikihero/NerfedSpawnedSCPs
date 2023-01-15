@@ -3,6 +3,7 @@ using Exiled.API.Enums;
 using Exiled.API.Extensions;
 using Exiled.API.Features;
 using Exiled.Events.EventArgs.Player;
+using Exiled.Permissions.Extensions;
 using MEC;
 using PlayerRoles;
 
@@ -12,7 +13,9 @@ namespace NerfedSpawnedSCPs
     {
         public void OnChangingRole(ChangingRoleEventArgs ev)
         {
-            if (ev.Reason != SpawnReason.ForceClass || ev.NewRole == RoleTypeId.Scp079)
+            if (ev.Player.CheckPermission("nss.immunity"))
+                return;
+            if (!Plugin.Instance.Config.SpawnReasons.Contains(ev.Reason) || ev.NewRole == RoleTypeId.Scp079)
                 return;
             if (ev.NewRole.GetSide() == Side.Scp && Round.ElapsedTime > TimeSpan.FromMinutes(Plugin.Instance.Config.TimeToActivate))
             {
