@@ -20,7 +20,7 @@ namespace NerfedSpawnedSCPs
             }
             if (!Plugin.Instance.Config.SpawnReasons.Contains(ev.Reason) || ev.NewRole == RoleTypeId.Scp079)
             {
-                Log.Debug($"Player {ev.Player.Nickname}({ev.Player.RawUserId})'s forceclass reason was not in the list or they were changed to 079.");
+                Log.Debug($"Player {ev.Player.Nickname}({ev.Player.RawUserId})'s spawnreason was not in the list or they were changed to 079.");
                 return;
             }
             if (ev.NewRole.GetSide() == Side.Scp && Round.ElapsedTime > TimeSpan.FromMinutes(Plugin.Instance.Config.TimeToActivate))
